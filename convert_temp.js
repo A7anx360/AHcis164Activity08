@@ -29,6 +29,27 @@ const toggleDisplay = (label1Text, label2Text) => {
 	document.querySelector("#degree_label_2").innerHTML = label2Text;
 };
 
+const errorMessage = () => {
+// An error message is created.
+// Creates a new <p> tag.
+	const newParagraph = document.createElement("p");
+// Creates a new text node & adds it to the paragraph.
+	let text = "";
+	if ($("#to_celsius").checked) {
+		text = document.createTextNode("Error! Entry must be between -459.67 & 9999.");
+	} else if ($("#to_fahrenheit").checked) {
+		text = document.createTextNode("Error! Entry must be between -273.15 & 9999.");
+	}
+	newParagraph.appendChild(text);
+// Gets the first <div> element on the page & it's parent element.
+	const firstDiv = $("div");
+	const parent = firstDiv.parentNode;
+// Sets the id of the new <p> tag to 'message'
+	newParagraph.setAttribute('id','message');
+// Inserts the new <p> tag after the first <div> element.
+	parent.insertBefore(newParagraph, firstDiv);
+};
+
 /****************************
 *  event handler functions  *
 *****************************/
@@ -40,28 +61,25 @@ const convertTemp = () => {
 // Different calculations will take place depending on which radio button is checked.
     if ($("#to_celsius").checked) {
 // Validation loop for Celsius.
-		if (temp > -273.15 && temp < 9999) {
+		if (temp > -459.67 && temp < 9999) {
 // The value of the variable 'temp' is passed to the function 'calculateCelsius'.
 			calculateCelsius(temp);
 		} else {
-// An error message is created.
-// Creates a new <p> tag.
-			//document.createElement("p");
-// 
-			//createTextNode("Message")
 // Resets the value of '#degrees_computed'.
 			$("#degrees_computed").value = "";
+// Calls the function 'errorMessage'.
+			errorMessage();
 		}
 	} else if ($("#to_fahrenheit").checked) {
 // Validation loop for Fahrenheit.
-		if (temp > -459.67 && temp < 9999) {
+		if (temp > -273.15 && temp < 9999) {
 // The value of the variable 'temp' is passed to the function 'calculateFahrenheit'.
 			calculateFahrenheit(temp);
 		} else {
-// An error message is created.
-
 // Resets the value of '#degrees_computed'.
 			$("#degrees_computed").value = "";
+// Calls the function 'errorMessage'.
+			errorMessage();
 		}
 	}
 };
@@ -78,6 +96,7 @@ const clearAll = evt => {
 // The following statements clear all values from each textbox.
 	$("#degrees_entered").value = "";
 	$("#degrees_computed").value = "";
+	$("#message").remove();
 };
 
 // The following Event-Listener is activated once the HTML document is fully loaded & DOM is ready,
