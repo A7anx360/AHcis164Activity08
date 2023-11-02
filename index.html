@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!--
+Written By: Alan Hernandez
+Started & Finished on: Novenmber 01, 2023
+-->
+
+<!--HTML Document Begins-->
+<html lang="en">
+<!--Head-->
+<head>
+<!--Meta Data-->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--Page Title-->
+	<title>Convert Temperatures</title>
+<!--Imports the Stylesheet-->
+   	<link rel="stylesheet" href="convert_temp.css">
+</head>
+
+<!--Body-->
+<body>
+<!--Main Content-->
+	<main>
+<!--Main Page Header-->
+		<h1>Convert temperatures</h1>
+<!--Radio Button for Fahrenheit to Celsius--> 
+		<div>
+			<input type="radio" name="conversion_type" id="to_celsius" checked>Fahrenheit to Celsius
+		</div>
+<!--Radio Button for Celsius to Fahrenheit--> 
+		<div>
+			<input type="radio" name="conversion_type" id="to_fahrenheit">Celsius to Fahrenheit
+		</div>
+<!--Input Box-->
+		<div>
+			<label id="degree_label_1">Enter F degrees:</label>
+			<input type="text" id="degrees_entered">
+		</div>
+<!--Output Box-->
+		<div>
+			<label id="degree_label_2">Degrees Celsius:</label>
+			<input type="text" id="degrees_computed" disabled>
+		</div>
+<!--Convert Button-->
+		<div>
+			<label></label>
+			<input type="button" id="convert" value="Convert" />
+<!--Clear Button-->
+            <input type="button" id="clear" value="Clear All"/>
+		</div>
+	</main>
+<!--JavaScript Call-->
+	<script src="convert_temp.js"></script>
+</body>
+</html>
